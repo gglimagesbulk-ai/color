@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Magic QR</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      transition: opacity 0.5s;
+    }
+  </style>
+</head>
+<body>
+
+<img id="magicImage" src="" />
+
+<script>
+  const images = [
+    "images/1.jpg",
+    "images/2.jpg",
+    "images/3.jpg",
+    "images/4.jpg",
+    "images/5.jpg",
+    "images/6.jpg",
+    "images/7.jpg",
+    "images/8.jpg",
+    // add upto any number
+  ];
+
+  let index = localStorage.getItem("magicIndex");
+
+  if (index === null) {
+    index = 0;
+  } else {
+    index = parseInt(index);
+  }
+
+  document.getElementById("magicImage").src = images[index];
+
+  index = (index + 1) % images.length;
+  localStorage.setItem("magicIndex", index);
+</script>
+
+</body>
+</html>
